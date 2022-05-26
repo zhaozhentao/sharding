@@ -1,34 +1,23 @@
 package oujiong.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import oujiong.entity.User;
 import oujiong.mapper.UserMapper;
-import oujiong.service.UserService;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
-
-/**
- * @Description: 用户实现类
- *
- * @author xub
- * @date 2019/10/10 下午8:53
- */
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl {
 
-    @Autowired
+    @Resource
     private UserMapper userMapper;
 
-    @Override
-    public  List<User> list() {
-        List<User> users = userMapper.selectAll();
-        return users;
+    public List<User> list() {
+        return userMapper.selectAll();
     }
 
-    @Override
     public String insertForeach(List<User> userList) {
         for (User user : userList) {
             user.setCreateTime(new Date());
@@ -39,5 +28,4 @@ public class UserServiceImpl implements UserService {
         userMapper.insertForeach(userList);
         return "保存成功";
     }
-
 }
