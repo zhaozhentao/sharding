@@ -1,0 +1,27 @@
+plugins {
+    id 'org.springframework.boot' version '2.0.6.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.test'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.0.1'
+    implementation 'mysql:mysql-connector-java:8.0.29'
+
+    implementation 'com.alibaba:druid-spring-boot-starter:1.1.16'
+    implementation 'org.apache.shardingsphere:sharding-jdbc-spring-boot-starter:4.0.0-RC1'
+    implementation 'org.apache.shardingsphere:sharding-jdbc-spring-namespace:4.0.0-RC1'
+
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+}
