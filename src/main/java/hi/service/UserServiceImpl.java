@@ -1,8 +1,8 @@
-package oujiong.service.impl;
+package hi.service;
 
 import org.springframework.stereotype.Service;
-import oujiong.entity.User;
-import oujiong.mapper.UserMapper;
+import hi.entity.User;
+import hi.mapper.UserMapper;
 
 import javax.annotation.Resource;
 import java.util.Date;

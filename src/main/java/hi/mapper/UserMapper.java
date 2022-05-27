@@ -1,8 +1,8 @@
-package oujiong.mapper;
+package hi.mapper;
 
 
 import org.apache.ibatis.annotations.Mapper;
-import oujiong.entity.User;
+import hi.entity.User;
 
 import java.util.List;
 

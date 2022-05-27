@@ -16,9 +16,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
     implementation 'mysql:mysql-connector-java:8.0.29'
-
     implementation 'com.alibaba:druid-spring-boot-starter:1.2.9'
-
     // 保证下面两个依赖的顺序
     implementation 'org.apache.shardingsphere:sharding-jdbc-spring-boot-starter:4.1.1'
     implementation 'com.baomidou:mybatis-plus-boot-starter:3.5.1'

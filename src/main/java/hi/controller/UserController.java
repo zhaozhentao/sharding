@@ -1,10 +1,10 @@
-package oujiong.controller;
+package hi.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-import oujiong.entity.User;
-import oujiong.service.impl.UserServiceImpl;
+import hi.entity.User;
+import hi.service.UserServiceImpl;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;

@@ -1,4 +1,4 @@
-package oujiong.entity;
+package hi.entity;
 
 import lombok.Data;
 
