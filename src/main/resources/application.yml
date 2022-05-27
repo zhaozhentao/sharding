@@ -23,4 +23,4 @@ spring:
               algorithm-expression: tab_user$->{id % 3}
     props:
       sql:
-        show=true:
+        show: true

@@ -28,7 +28,7 @@ public class UserController {
         userList.add(new User(5L, "奶奶", "女", 62));
     }
 
-    @PostMapping("save-user")
+    @GetMapping("save-user")
     public Object saveUser() {
         return userService.insertForeach(userList);
     }
