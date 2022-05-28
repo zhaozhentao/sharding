@@ -21,7 +21,8 @@ spring:
     sharding:
       tables:
         user:
-          actual-data-nodes: master.user$->{0..2}
+          interval: 5000
+          actual-data-nodes: master.not_exits
           key-generator:
             column: id
             type: SNOWFLAKE
