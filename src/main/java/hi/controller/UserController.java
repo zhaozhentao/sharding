@@ -39,7 +39,7 @@ public class UserController {
     public Object listUser() {
         return userService.page(
             new Page<>(1, 1),
-            new QueryWrapper<User>().lt("created_at", new Date())
+            new QueryWrapper<User>().eq("created_at", "2022-05-28 15:03:44")
         );
     }
 }

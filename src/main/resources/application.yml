@@ -5,7 +5,7 @@ spring:
   datasource:
     druid:
       stat-view-servlet:
-        enabled: true # sql监控页面 http://localhost:8080/druid/index.html
+        enabled: true
         allow:
   main:
     allow-bean-definition-overriding: true
@@ -28,8 +28,8 @@ spring:
           table-strategy:
             standard:
               sharding-column: created_at
-              precise-algorithm-class-name: hi.DateShardingAlgorithm
-              range-algorithm-class-name: hi.DateShardingAlgorithm
+              precise-algorithm-class-name: hi.sharding.algorithm.DateShardingAlgorithm
+              range-algorithm-class-name: hi.sharding.algorithm.DateShardingAlgorithm
     props:
       sql:
         show: true
