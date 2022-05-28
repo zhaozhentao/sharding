@@ -1,7 +1,7 @@
 package hi.controller;
 
 import hi.entity.User;
-import hi.service.UserServiceImpl;
+import hi.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,7 +14,7 @@ import java.util.List;
 public class UserController {
 
     @Resource
-    private UserServiceImpl userService;
+    private UserService userService;
 
     List<User> userList = new ArrayList<>();
 
@@ -29,7 +29,7 @@ public class UserController {
 
     @GetMapping("save-user")
     public Object saveUser() {
-        return userService.insertForeach(userList);
+        return userService.saveBatch(userList);
     }
 
     @GetMapping("list-user")

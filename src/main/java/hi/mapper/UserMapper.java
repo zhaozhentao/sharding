@@ -1,16 +1,10 @@
 package hi.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import hi.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
-import java.util.List;
-
 @Mapper
-public interface UserMapper {
+public interface UserMapper extends BaseMapper<User> {
 
-    int insertForeach(List<User> list);
-
-    List<User> selectAll();
-
-    int insert(User record);
 }
