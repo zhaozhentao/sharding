@@ -26,9 +26,10 @@ spring:
             column: id
             type: SNOWFLAKE
           table-strategy:
-            inline:
-              sharding-column: id
-              algorithm-expression: user$->{id % 3}
+            standard:
+              sharding-column: created_at
+              precise-algorithm-class-name: hi.DateShardingAlgorithm
+              range-algorithm-class-name: hi.DateShardingAlgorithm
     props:
       sql:
         show: true

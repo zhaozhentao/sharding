@@ -1,5 +1,6 @@
 package hi.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import hi.entity.User;
 import hi.service.UserService;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -35,6 +37,9 @@ public class UserController {
 
     @GetMapping("list-user")
     public Object listUser() {
-        return userService.page(new Page<>(1, 1));
+        return userService.page(
+            new Page<>(1, 1),
+            new QueryWrapper<User>().lt("created_at", new Date())
+        );
     }
 }
