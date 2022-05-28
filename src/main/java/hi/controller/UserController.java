@@ -1,5 +1,6 @@
 package hi.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import hi.entity.User;
 import hi.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,6 +35,6 @@ public class UserController {
 
     @GetMapping("list-user")
     public Object listUser() {
-        return userService.list();
+        return userService.page(new Page<>(1, 1));
     }
 }
