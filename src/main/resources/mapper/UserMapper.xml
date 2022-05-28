@@ -16,11 +16,11 @@
   <select id="selectAll"  resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from tab_user order by id
+    from user order by id
   </select>
 
   <insert id="insert" parameterType="hi.entity.User">
-    insert into tab_user (id, name, sex,
+    insert into user (id, name, sex,
       age, create_time, update_time,
       status)
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR},
@@ -29,7 +29,7 @@
   </insert>
 
   <insert id="insertForeach" parameterType="java.util.List" useGeneratedKeys="false">
-    insert into tab_user (id, name, sex,
+    insert into user (id, name, sex,
     age, create_time, update_time,
     status)
     values

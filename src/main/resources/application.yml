@@ -25,12 +25,12 @@ spring:
         password: password
     sharding:
       tables:
-        tab_user:
-          actual-data-nodes: master.tab_user$->{0..2}
+        user:
+          actual-data-nodes: master.user$->{0..2}
           table-strategy:
             inline:
               sharding-column: id
-              algorithm-expression: tab_user$->{id % 3}
+              algorithm-expression: user$->{id % 3}
     props:
       sql:
         show: true
