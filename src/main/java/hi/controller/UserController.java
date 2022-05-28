@@ -1,10 +1,9 @@
 package hi.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
 import hi.entity.User;
 import hi.service.UserServiceImpl;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -21,11 +20,11 @@ public class UserController {
 
     @PostConstruct
     private void getData() {
-        userList.add(new User(1L, "小小", "女", 3));
-        userList.add(new User(2L, "爸爸", "男", 30));
-        userList.add(new User(3L, "妈妈", "女", 28));
-        userList.add(new User(4L, "爷爷", "男", 64));
-        userList.add(new User(5L, "奶奶", "女", 62));
+        userList.add(new User(1L, "小小"));
+        userList.add(new User(2L, "爸爸"));
+        userList.add(new User(3L, "妈妈"));
+        userList.add(new User(4L, "爷爷"));
+        userList.add(new User(5L, "奶奶"));
     }
 
     @GetMapping("save-user")
