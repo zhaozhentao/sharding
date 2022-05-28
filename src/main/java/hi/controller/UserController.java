@@ -21,11 +21,11 @@ public class UserController {
 
     @PostConstruct
     private void getData() {
-        userList.add(new User(1L, "小小"));
-        userList.add(new User(2L, "爸爸"));
-        userList.add(new User(3L, "妈妈"));
-        userList.add(new User(4L, "爷爷"));
-        userList.add(new User(5L, "奶奶"));
+        userList.add(new User( "小小"));
+        userList.add(new User( "爸爸"));
+        userList.add(new User( "妈妈"));
+        userList.add(new User( "爷爷"));
+        userList.add(new User( "奶奶"));
     }
 
     @GetMapping("save-user")

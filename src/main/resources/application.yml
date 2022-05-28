@@ -4,11 +4,6 @@ server:
 spring:
   datasource:
     druid:
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      max-active: 20
-      initial-size: 1
-      min-idle: 1
-      filters: stat,wall
       stat-view-servlet:
         enabled: true # sql监控页面 http://localhost:8080/druid/index.html
         allow:
@@ -27,6 +22,9 @@ spring:
       tables:
         user:
           actual-data-nodes: master.user$->{0..2}
+          key-generator:
+            column: id
+            type: SNOWFLAKE
           table-strategy:
             inline:
               sharding-column: id
