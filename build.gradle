@@ -23,4 +23,6 @@ dependencies {
 
     compileOnly 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+    implementation 'cn.hutool:hutool-all:5.8.0'
 }
