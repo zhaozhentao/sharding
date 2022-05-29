@@ -4,6 +4,17 @@
     <select id="loadTables" resultType="java.lang.String">
         select table_name
         from information_schema.tables
-        where table_schema = 'laravel' and table_name like 'user%'
+        where table_schema = 'laravel'
+          and table_name like 'user%'
     </select>
+
+    <update id="createTable" parameterType="java.lang.String">
+        CREATE TABLE ${table_name}
+        (
+            `id`         bigint NOT NULL AUTO_INCREMENT,
+            `name`       varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '姓名',
+            `created_at` datetime                                              DEFAULT NULL,
+            PRIMARY KEY (`id`) USING BTREE
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC;
+    </update>
 </mapper>

@@ -22,12 +22,15 @@ import org.springframework.context.annotation.Import;
 @SpringBootApplication(exclude = {DruidDataSourceAutoConfigure.class})
 public class Application implements ApplicationContextAware {
 
+    public static ApplicationContext context;
+
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
 
     @Override
     public void setApplicationContext(ApplicationContext context) throws BeansException {
+        Application.context = context;
         String key = "spring.shardingsphere.sharding.tables.user.interval";
         DateShardingAlgorithm.interval = context.getEnvironment().getProperty(key, Integer.class, 5000);
         DateShardingAlgorithm.tables = context.getBean(UserMapper.class).loadTables();

@@ -21,7 +21,7 @@ spring:
     sharding:
       tables:
         user:
-          interval: 5000
+          interval: 86400
           actual-data-nodes: master.not_exits
           key-generator:
             column: id
