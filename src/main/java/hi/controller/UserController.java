@@ -1,5 +1,6 @@
 package hi.controller;
 
+import cn.hutool.core.date.DateUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import hi.entity.User;
@@ -22,11 +23,9 @@ public class UserController {
 
     @PostConstruct
     private void getData() {
-        userList.add(new User( "小小"));
-        userList.add(new User( "爸爸"));
-        userList.add(new User( "妈妈"));
-        userList.add(new User( "爷爷"));
-        userList.add(new User( "奶奶"));
+        userList.add(new User( "29号", DateUtil.parseDate("2022-05-29 00:00:00")));
+        userList.add(new User( "30号", DateUtil.parseDate("2022-05-30 00:00:00")));
+        userList.add(new User( "31号", DateUtil.parseDate("2022-05-31 00:00:00")));
     }
 
     @GetMapping("save-user")

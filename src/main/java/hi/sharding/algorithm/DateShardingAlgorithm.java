@@ -8,9 +8,10 @@ import org.apache.shardingsphere.api.sharding.standard.PreciseShardingValue;
 import org.apache.shardingsphere.api.sharding.standard.RangeShardingAlgorithm;
 import org.apache.shardingsphere.api.sharding.standard.RangeShardingValue;
 
+import java.sql.Timestamp;
 import java.util.*;
 
-public class DateShardingAlgorithm implements PreciseShardingAlgorithm<String>, RangeShardingAlgorithm<String> {
+public class DateShardingAlgorithm implements PreciseShardingAlgorithm<Long>, RangeShardingAlgorithm<String> {
 
     public static Integer interval;
 
@@ -26,8 +27,10 @@ public class DateShardingAlgorithm implements PreciseShardingAlgorithm<String>, 
     }
 
     @Override
-    public String doSharding(Collection<String> availableTargetNames, PreciseShardingValue<String> shardingValue) {
-        Date date = DateUtil.parse(shardingValue.getValue(), "yyyy-MM-dd HH:mm:ss");
+    public String doSharding(Collection<String> availableTargetNames, PreciseShardingValue<Long> shardingValue) {
+        String value = shardingValue.getValue() + "";
+
+        Date date = DateUtil.parse(value, "yyyy-MM-dd HH:mm:ss");
 
         String tableName = "user" + (date.getTime() / (interval * 1000));
 

@@ -15,8 +15,8 @@ public class User extends Model<User> {
 
     private Date createdAt;
 
-    public User(String name) {
+    public User(String name, Date date) {
         this.name = name;
-        this.createdAt = new Date();
+        this.createdAt = date;
     }
 }
