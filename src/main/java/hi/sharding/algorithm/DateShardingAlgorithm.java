@@ -3,16 +3,17 @@ package hi.sharding.algorithm;
 import cn.hutool.core.date.DateUtil;
 import hi.Application;
 import hi.mapper.UserMapper;
-import org.apache.shardingsphere.api.sharding.standard.PreciseShardingAlgorithm;
-import org.apache.shardingsphere.api.sharding.standard.PreciseShardingValue;
-import org.apache.shardingsphere.api.sharding.standard.RangeShardingAlgorithm;
-import org.apache.shardingsphere.api.sharding.standard.RangeShardingValue;
+import org.apache.shardingsphere.sharding.api.sharding.complex.ComplexKeysShardingAlgorithm;
+import org.apache.shardingsphere.sharding.api.sharding.complex.ComplexKeysShardingValue;
+import org.apache.shardingsphere.sharding.api.sharding.standard.PreciseShardingValue;
+import org.apache.shardingsphere.sharding.api.sharding.standard.RangeShardingValue;
+import org.apache.shardingsphere.sharding.api.sharding.standard.StandardShardingAlgorithm;
 
 import java.util.Collection;
 import java.util.Date;
 import java.util.SortedSet;
 
-public class DateShardingAlgorithm implements PreciseShardingAlgorithm<Long>, RangeShardingAlgorithm<String> {
+public class DateShardingAlgorithm implements StandardShardingAlgorithm<Long> {
 
     public static Integer interval;
 
@@ -41,7 +42,7 @@ public class DateShardingAlgorithm implements PreciseShardingAlgorithm<Long>, Ra
     }
 
     @Override
-    public Collection<String> doSharding(Collection<String> availableTargetNames, RangeShardingValue<String> shardingValue) {
+    public Collection<String> doSharding(Collection<String> availableTargetNames, RangeShardingValue<Long> shardingValue) {
         String value = shardingValue.getValueRange().upperEndpoint() + "";
 
         Date bigEnd = DateUtil.parse(value, "yyyy-MM-dd HH:mm:ss");
@@ -49,5 +50,15 @@ public class DateShardingAlgorithm implements PreciseShardingAlgorithm<Long>, Ra
         String tableName = "user" + (bigEnd.getTime() / (interval * 1000));
 
         return tables.headSet(tableName);
+    }
+
+    @Override
+    public void init() {
+
+    }
+
+    @Override
+    public String getType() {
+        return "standard";
     }
 }
