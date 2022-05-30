@@ -10,6 +10,8 @@ spring:
   main:
     allow-bean-definition-overriding: true
   shardingsphere:
+    mode:
+      type: Memory
     props:
       sql-show: true
     datasource:
@@ -24,14 +26,11 @@ spring:
       sharding:
         sharding-algorithms:
           my-algorithms:
-            type: CLASS_BASED
-            props:
-              strategy: standard
-              algorithmClassName: hi.sharding.algorithm.DateShardingAlgorithm
+            type: DateShardingAlgorithm
         tables:
           user:
             interval: 86400
-            actual-data-nodes: master.user$->{0..100000}
+            actual-data-nodes: master.not_exits
             key-generate-strategy:
               column: id
               key-generator-name: SNOWFLAKE

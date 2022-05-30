@@ -3,8 +3,6 @@ package hi.sharding.algorithm;
 import cn.hutool.core.date.DateUtil;
 import hi.Application;
 import hi.mapper.UserMapper;
-import org.apache.shardingsphere.sharding.api.sharding.complex.ComplexKeysShardingAlgorithm;
-import org.apache.shardingsphere.sharding.api.sharding.complex.ComplexKeysShardingValue;
 import org.apache.shardingsphere.sharding.api.sharding.standard.PreciseShardingValue;
 import org.apache.shardingsphere.sharding.api.sharding.standard.RangeShardingValue;
 import org.apache.shardingsphere.sharding.api.sharding.standard.StandardShardingAlgorithm;
@@ -49,7 +47,11 @@ public class DateShardingAlgorithm implements StandardShardingAlgorithm<Long> {
 
         String tableName = "user" + (bigEnd.getTime() / (interval * 1000));
 
-        return tables.headSet(tableName);
+        SortedSet<String> ts = tables.headSet(tableName);
+
+        System.out.println(ts);
+
+        return ts;
     }
 
     @Override
@@ -59,6 +61,6 @@ public class DateShardingAlgorithm implements StandardShardingAlgorithm<Long> {
 
     @Override
     public String getType() {
-        return "standard";
+        return "DateShardingAlgorithm";
     }
 }
