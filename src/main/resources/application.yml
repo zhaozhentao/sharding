@@ -10,6 +10,10 @@ spring:
   main:
     allow-bean-definition-overriding: true
   shardingsphere:
+    mode:
+      type: Memory
+    props:
+      sql-show: true
     datasource:
       names: master
       master:
@@ -18,19 +22,19 @@ spring:
         url: jdbc:mysql://localhost:3306/laravel?characterEncoding=utf-8
         username: sail
         password: password
-    sharding:
-      tables:
-        user:
-          interval: 86400
-          actual-data-nodes: master.not_exits
-          key-generator:
-            column: id
-            type: SNOWFLAKE
-          table-strategy:
-            standard:
-              sharding-column: created_at
-              precise-algorithm-class-name: hi.sharding.algorithm.DateShardingAlgorithm
-              range-algorithm-class-name: hi.sharding.algorithm.DateShardingAlgorithm
-    props:
-      sql:
-        show: true
+    rules:
+      sharding:
+        sharding-algorithms:
+          my-algorithms:
+            type: DateShardingAlgorithm
+        tables:
+          user:
+            interval: 86400
+            actual-data-nodes: master.not_exits
+            key-generate-strategy:
+              column: id
+              key-generator-name: SNOWFLAKE
+            table-strategy:
+              standard:
+                sharding-column: created_at
+                sharding-algorithm-name: my-algorithms

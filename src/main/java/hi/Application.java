@@ -25,7 +25,7 @@ public class Application {
     public static void main(String[] args) {
         context = SpringApplication.run(Application.class, args);
 
-        String key = "spring.shardingsphere.sharding.tables.user.interval";
+        String key = "spring.shardingsphere.rules.sharding.tables.user.interval";
         DateShardingAlgorithm.interval = context.getEnvironment().getProperty(key, Integer.class, 5000);
         DateShardingAlgorithm.tables = context.getBean(UserMapper.class).loadTables();
     }
